@@ -29,7 +29,7 @@ end
 #Install the package and execute 'chef-server-ctl reconfigure' everytime installation is done
 package package_name do
   source package_local_path
-  provider Chef::Provider::Package::Yum
+  provider Chef::Provider::Package::Rpm
   notifies :run, 'execute[reconfigure-chef-server]', :immediately
   notifies :run, 'execute[create-admin-user]', :immediately
   notifies :run, 'execute[create-organization]', :immediately
