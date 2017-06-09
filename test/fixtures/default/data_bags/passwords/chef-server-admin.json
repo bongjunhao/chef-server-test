@@ -1,0 +1,12 @@
+{
+  "id":"chef-server-admin",
+  "username":"admin",
+  "email":"bongjunhao@oracle.com",
+  "password":"P@5sw0rD",
+  "firstName":"Jun Hao",
+  "lastName":"Bong",
+  "privateKeyName":"admin",
+  "shortName":"ocst",
+  "fullName":"oracle-chef-server-testing",
+  "orgPrivateKeyName":"orgPrivateKey"
+}
