@@ -37,3 +37,8 @@ end
 describe file("/orgPrivateKey.pem") do
   it {should exist}
 end
+
+#Check that chef-manage has been installed
+describe package('chef-manage') do
+  it {should be_installed}
+end

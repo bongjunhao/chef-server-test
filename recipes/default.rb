@@ -30,6 +30,9 @@ package package_name do
   notifies :run, 'execute[reconfigure-chef-server]', :immediately
   notifies :run, 'execute[create-admin-user]', :immediately
   notifies :run, 'execute[create-organization]', :immediately
+  notifies :run, 'execute[install-chef-manage]', :immediately
+  notifies :run, 'execute[reconfigure-chef-server]', :immediately
+  notifies :run, 'execute[reconfigure-chef-manage]', :immediately
 end
 
 # reconfigure the installation, do not execute if no installation done (i.e chef-server is already installed) - ensures idempotency
@@ -49,5 +52,17 @@ end
 execute 'create-organization' do
   #Command to create organisation
   command "sudo chef-server-ctl org-create #{shortName} #{fullName} --association #{userName} --filename #{orgPrivateKeyName}.pem"
+  action :nothing
+end
+
+#Install the management console
+execute 'install-chef-manage' do
+  command "chef-server-ctl install chef-manage"
+  action :nothing
+end
+
+#Reconfigure the chef management installation
+execute 'reconfigure-chef-manage' do
+  command "chef-manage-ctl reconfigure --accept-license"
   action :nothing
 end
